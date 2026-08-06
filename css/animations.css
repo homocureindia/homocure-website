@@ -1,0 +1,270 @@
+/* ===========================================
+   HOMOCURE ANIMATIONS v2.0
+   =========================================== */
+
+
+/* ========= Fade Up ========= */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(50px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* ========= Slide Left ========= */
+
+.slide-left{
+    opacity:0;
+    transform:translateX(-70px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.slide-left.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+
+/* ========= Slide Right ========= */
+
+.slide-right{
+    opacity:0;
+    transform:translateX(70px);
+    transition:opacity .8s ease, transform .8s ease;
+}
+
+.slide-right.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+
+/* ========= Floating ========= */
+
+.float{
+    animation:floating 5s ease-in-out infinite;
+}
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+
+/* ========= Image Zoom ========= */
+
+.zoom{
+    overflow:hidden;
+    border-radius:20px;
+}
+
+.zoom img{
+
+    transition:transform .45s ease;
+
+}
+
+.zoom:hover img{
+
+    transform:scale(1.05);
+
+}
+
+
+/* ========= Feature Card ========= */
+
+.feature-card{
+
+    transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+
+}
+
+.feature-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.12);
+
+}
+
+
+/* ========= Product Card ========= */
+
+.product-card{
+
+    transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.12);
+
+}
+
+
+/* ========= Buttons ========= */
+
+.btn-primary,
+.btn-secondary{
+
+    transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+
+}
+
+.btn-primary:hover,
+.btn-secondary:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+/* ========= Navbar ========= */
+
+.navbar{
+
+    transition:
+    background .3s ease,
+    box-shadow .3s ease,
+    padding .3s ease;
+
+}
+
+.nav-scroll{
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+/* ========= Loader ========= */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fff;
+
+    z-index:99999;
+
+    transition:opacity .5s ease;
+
+}
+
+.loader-logo img{
+
+    width:120px;
+
+    animation:pulse 1.5s infinite;
+
+}
+
+.loader-hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(.95);
+        opacity:.5;
+    }
+
+    50%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(.95);
+        opacity:.5;
+    }
+
+}
+
+
+/* ========= Progress Bar ========= */
+
+#progress-bar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:0;
+
+    height:4px;
+
+    background:#16a34a;
+
+    z-index:999999;
+
+}
+
+
+/* ========= Back To Top ========= */
+
+#backToTop{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(20px);
+
+    transition:.3s ease;
+
+}
+
+#backToTop.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
