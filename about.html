@@ -1,101 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>About Us | Homocure Pharmaceuticals</title>
+    <meta name="description" content="Learn about Homocure Pharmaceuticals, a homeopathic healthcare company preparing to launch, and the 200+ year history of homeopathy behind our formulations.">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/animations.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header class="navbar">
-
-    <div class="container nav-container">
-
-        <a href="index.html" class="logo">
+    <div id="loader">
+        <div class="loader-logo">
             <img src="images/logo.jpg" alt="Homocure Logo">
-        </a>
-
-        <nav>
-
-            <ul class="nav-links">
-
-                <li><a href="index.html">Home</a></li>
-
-                <li><a class="active" href="about.html">About</a></li>
-
-                <li><a href="products.html">Products</a></li>
-
-                <li><a href="contact.html">Contact</a></li>
-
-            </ul>
-
-        </nav>
-
+        </div>
     </div>
 
-</header>
+    <div id="progress-bar"></div>
 
-<section class="hero">
+    <header class="navbar">
+        <div class="container nav-container">
 
-    <div class="container hero-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Homocure Logo">
+            </a>
 
-     <div class="hero-text">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
 
-    <h1>
-        Building Trust <br>
-        Through Homeopathy
-    </h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a class="active" href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
 
-    <p>
-        Homocure Pharmaceuticals is committed to delivering safe, effective and
-        high-quality homeopathic healthcare solutions through innovation,
-        research and uncompromising quality standards.
-    </p>
+            <a href="contact.html" class="btn-primary">Contact Us</a>
 
-</div>
+        </div>
+    </header>
 
-<div class="hero-image">
-    <img src="images/about.jpg" alt="About Homocure">
-</div>   
+    <section class="hero">
 
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-spotlight"></div>
+
+        <div class="container hero-content">
+
+            <div class="hero-text slide-left">
+                <span class="launch-badge"><span class="dot"></span> Launching Soon</span>
+                <h1>Building Trust <br>Through Homeopathy</h1>
+                <p>
+                    Homocure Pharmaceuticals is committed to delivering safe, effective and
+                    high-quality homeopathic healthcare solutions through innovation,
+                    research and uncompromising quality standards.
+                </p>
+            </div>
+
+            <div class="hero-image float zoom slide-right">
+                <img class="img-reveal" src="images/about.jpg" alt="About Homocure">
+            </div>
+
+        </div>
+    </section>
+
+    <div class="cert-marquee">
+        <div class="cert-track">
+            <span>🏭 WHO-GMP Aligned Facility</span>
+            <span>✅ ISO Quality Framework</span>
+            <span>🇮🇳 Made In India</span>
+            <span>🧪 AYUSH-Compliant Process</span>
+            <span>🔬 Strict Batch Testing</span>
+            <span>🏭 WHO-GMP Aligned Facility</span>
+            <span>✅ ISO Quality Framework</span>
+            <span>🇮🇳 Made In India</span>
+            <span>🧪 AYUSH-Compliant Process</span>
+            <span>🔬 Strict Batch Testing</span>
+        </div>
     </div>
 
-</section>
+    <section class="about">
+        <div class="container">
+            <span class="eyebrow">Who We Are</span>
+            <h2 class="section-title">A New Name, Built On an Old Practice</h2>
+            <p>
+                Homocure Pharmaceuticals was established with a vision to create a trusted
+                healthcare brand dedicated to delivering quality-focused homeopathic solutions.
+                As we prepare for launch, our goal is to build lasting relationships with
+                customers, healthcare professionals and business partners through
+                transparency, reliability and continuous improvement — grounded in a
+                practice with more than two centuries of history behind it.
+            </p>
+        </div>
+    </section>
 
-<section class="about">
+    <svg class="wave-divider wave-fill-soft" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C300,60 900,0 1200,30 L1200,60 L0,60 Z"></path>
+    </svg>
 
-    <div class="container">
+    <section class="mission" style="background:var(--bg-soft);">
+        <div class="container">
+            <span class="eyebrow">A Brief History</span>
+            <h2 class="section-title">The Journey of Homeopathy</h2>
+            <p class="section-subtitle">
+                Understanding where the practice behind our formulations comes from.
+            </p>
 
-        <h2 class="section-title">Who We Are</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-up">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-year">1796 — Germany</span>
+                    <h4>Samuel Hahnemann Founds Homeopathy</h4>
+                    <p>
+                        While translating a medical text on cinchona bark, physician Samuel
+                        Hahnemann tests the substance on himself and notices it produces
+                        malaria-like symptoms. He concludes that a substance capable of
+                        causing symptoms in a healthy person could, in diluted form, treat
+                        similar symptoms in someone unwell — the principle of "like cures like."
+                    </p>
+                </div>
+                <div class="timeline-item fade-up">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-year">1830s — Europe</span>
+                    <h4>Homeopathy Spreads and Standardizes</h4>
+                    <p>
+                        Homeopathy spreads rapidly across Europe. American homeopath
+                        Constantine Hering introduces the centesimal (C) potency scale still
+                        used today, and the first dedicated homeopathic hospital opens in
+                        Leipzig in 1832.
+                    </p>
+                </div>
+                <div class="timeline-item fade-up">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-year">1975 — India</span>
+                    <h4>National Quality Standards Introduced</h4>
+                    <p>
+                        The Homoeopathic Pharmacopoeia Laboratory is established in Ghaziabad
+                        to lay down national standards for the identity, purity and quality of
+                        homeopathic medicines manufactured in India.
+                    </p>
+                </div>
+                <div class="timeline-item fade-up">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-year">2014 — India</span>
+                    <h4>Ministry of AYUSH Formed</h4>
+                    <p>
+                        The Government of India establishes the Ministry of AYUSH to regulate
+                        Ayurveda, Yoga, Unani, Siddha and Homeopathy as recognised systems of
+                        medicine under the Drugs &amp; Cosmetics Act, 1940.
+                    </p>
+                </div>
+                <div class="timeline-item fade-up">
+                    <span class="timeline-dot"></span>
+                    <span class="timeline-year">2027 — Noida</span>
+                    <h4>Homocure Pharmaceuticals Prepares to Launch</h4>
+                    <p>
+                        Building on this long-established practice, Homocure is developing a
+                        product line of mother tinctures, dilutions, biochemic tablets,
+                        syrups, drops and ointments — ahead of its upcoming launch.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <p>
+    <svg class="wave-divider wave-fill-white" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C300,0 900,60 1200,30 L1200,60 L0,60 Z"></path>
+    </svg>
 
-            Homocure Pharmaceuticals was established with a vision to create a trusted
-            healthcare brand dedicated to delivering quality-focused homeopathic solutions.
+    <section class="mission">
+        <div class="container">
+            <div class="mission-box">
 
-            Our goal is to build lasting relationships with customers, healthcare professionals
-            and business partners through transparency, reliability and continuous improvement.
+                <div class="mission-card fade-up">
+                    <h2>Our Mission</h2>
+                    <p>
+                        To provide safe, reliable and high-quality homeopathic medicines that
+                        improve the quality of life through innovation, ethical practices and
+                        uncompromising quality standards.
+                    </p>
+                </div>
 
-        </p>
+                <div class="mission-card fade-up">
+                    <h2>Our Vision</h2>
+                    <p>
+                        To become one of India's most trusted homeopathic pharmaceutical
+                        companies by delivering globally recognized products with excellence,
+                        research and customer satisfaction.
+                    </p>
+                </div>
 
-    </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">What Sets Us Apart</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card fade-up tilt">
+                    <h3>✔ Premium Quality</h3>
+                    <p>Manufactured with strict quality standards and carefully selected ingredients.</p>
+                </div>
+                <div class="feature-card fade-up tilt">
+                    <h3>🌿 Natural Ingredients</h3>
+                    <p>Safe, effective and trusted homeopathic medicines for every family.</p>
+                </div>
+                <div class="feature-card fade-up tilt">
+                    <h3>🏥 Trusted Healthcare</h3>
+                    <p>Committed to innovation, patient safety and long-term wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quality-section">
+        <div class="container">
+            <span class="eyebrow">Common Questions</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What exactly is homeopathy?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Homeopathy is a system of alternative medicine founded in 1796 by
+                            German physician Samuel Hahnemann, based on the principle of "like
+                            cures like." Remedies are prepared from natural substances through
+                            a process of serial dilution and succussion (vigorous shaking).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What do potencies like 30C or 200C mean?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            These numbers refer to how many times a substance has been
+                            diluted on the centesimal scale. A "30C" potency, for example, has
+                            gone through 30 rounds of 1:100 dilution with succussion between
+                            each step. Higher numbers indicate more dilution steps, not a
+                            stronger concentration of the original substance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is a mother tincture?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            A mother tincture is the initial concentrated extract made from a
+                            raw herbal, mineral or other natural source — the starting point
+                            from which further homeopathic dilutions are prepared.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is homeopathy regulated in India?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            Yes. Homeopathy is recognised as one of India's official systems of
+                            medicine and is regulated by the Ministry of AYUSH under the Drugs
+                            &amp; Cosmetics Act, 1940, with manufacturing standards set out in
+                            Schedule T of the Drugs Rules, 1945.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        When is Homocure launching?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            We're currently in the final stages of preparing our product range
+                            and manufacturing processes ahead of launch. Follow us on
+                            Instagram or reach out via our Contact page to stay updated.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Want to Know More About Us?</h2>
+            <p>
+                Reach out to learn more about our products, quality standards, or
+                business opportunities with Homocure Pharmaceuticals.
+            </p>
+            <a href="contact.html" class="btn-primary">Contact Us</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <div>
+                <img src="images/logo.jpg" alt="Homocure Logo" class="footer-logo">
+                <p>
+                    Homocure Pharmaceuticals is committed to delivering trusted
+                    homeopathic healthcare solutions with quality and innovation.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>📧 homocurepharma@gmail.com</p>
+                <p>📍 Noida, Uttar Pradesh</p>
+            </div>
+
+        </div>
+
+        <div class="container copyright">
+            © 2026 Homocure Pharmaceuticals. All Rights Reserved.
+        </div>
+    </footer>
+
+    <button id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="js/script.js"></script>
 
 </body>
-
-<script src="js/script.js"></script>
-
 </html>

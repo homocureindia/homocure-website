@@ -1,257 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>Products | Homocure Pharmaceuticals</title>
+    <meta name="description" content="Explore Homocure Pharmaceuticals' upcoming range of mother tinctures, dilutions, biochemic tablets, syrups, drops and ointments, and how homeopathic medicines are made.">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
 
-<title>Products | Homocure Pharmaceuticals</title>
-
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/animations.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<header class="navbar">
-
-<div class="container nav-container">
-
-<a href="index.html" class="logo">
-<img src="images/logo.jpg" alt="Homocure Logo">
-</a>
-
-<nav>
-
-<ul class="nav-links">
-
-<li><a href="index.html">Home</a></li>
-
-<li><a href="about.html">About</a></li>
-
-<li><a class="active" href="products.html">Products</a></li>
-
-<li><a href="contact.html">Contact</a></li>
-
-</ul>
-
-</nav>
-
-</div>
-
-</header>
-
-<section class="hero">
-
-<div class="container hero-content">
-
-<div class="hero-text">
-
-<h1>Our Products</h1>
-
-<p>
-
-Our product portfolio is currently under development.
-
-High-quality homeopathic healthcare products will be available soon.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="products-preview">
-
-<div class="container">
-
-<h2 class="section-title">Our Product Categories</h2>
-
-<p class="section-subtitle">
-Explore our upcoming range of premium homeopathic healthcare products.
-</p>
-
-</div>
-
-</section>
-
-<section class="products-section">
-    <div class="container">
-
-        <h2 class="section-title">Product Categories</h2>
-
-        <div class="feature-grid">
-
-          <div class="feature-card">
-
-    <img src="images/mother-tincture.png" alt="Mother Tinctures" class="product-img">
-
-    <h3>Mother Tinctures</h3>
-
-    <p>
-        Premium homeopathic mother tinctures prepared with carefully selected natural ingredients.
-    </p>
-
-    <a href="contact.html" class="btn-primary">Coming Soon</a>
-
-</div>
-
-            <div class="feature-card">
-                <img src="images/dilution.png" alt="Dilutions" class="product-img">
-                <h3>Dilutions</h3>
-                <p>Wide range of homeopathic dilutions in multiple potencies.</p>
-                <a href="contact.html" class="btn-primary">Coming Soon</a>
-            </div>
-
-            <div class="feature-card">
-                <img src="images/biochemic.png" alt="Biochemic Tablets" class="product-img">
-                <h3>Biochemic Tablets</h3>
-                <p>Trusted biochemic combinations for daily healthcare.</p>
-                <a href="contact.html" class="btn-primary">Coming Soon</a>
-            </div>
-
-            <div class="feature-card">
-                <img src="images/syrup.png" alt="Syrups" class="product-img">
-                <h3>Syrups</h3>
-                <p>Safe and effective homeopathic syrups for all age groups.</p>
-                <a href="contact.html" class="btn-primary">Coming Soon</a>
-            </div>
-
-            <div class="feature-card">
-                <img src="images/drops.png" alt="Drops" class="product-img">
-                <h3>Drops</h3>
-                <p>Specialized drops for various health conditions.</p>
-                <a href="contact.html" class="btn-primary">Coming Soon</a>
-            </div>
-
-            <div class="feature-card">
-                <img src="images/ointments.png" alt="Ointments" class="product-img">
-                <h3>Ointments</h3>
-                <p>Premium external applications made with quality standards.</p>
-                <a href="contact.html" class="btn-primary">Coming Soon</a>
-            </div>
-
+    <div id="loader">
+        <div class="loader-logo">
+            <img src="images/logo.jpg" alt="Homocure Logo">
         </div>
     </div>
-</section>
 
-<section class="manufacturing">
-    <div class="container">
+    <div id="progress-bar"></div>
 
-        <h2 class="section-title">Manufacturing Standards</h2>
+    <header class="navbar">
+        <div class="container nav-container">
 
-        <div class="feature-grid">
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Homocure Logo">
+            </a>
 
-            <div class="feature-card">
-                <h3>🏭 WHO-GMP Practices</h3>
-                <p>Manufacturing process follows internationally accepted quality standards.</p>
-            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
 
-            <div class="feature-card">
-                <h3>🧪 Advanced Laboratory</h3>
-                <p>Every batch undergoes strict quality testing before distribution.</p>
-            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a class="active" href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
 
-            <div class="feature-card">
-                <h3>🔬 Research & Innovation</h3>
-                <p>Continuous research to improve effectiveness, safety and reliability.</p>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-<section class="quality-section">
-    <div class="container">
-
-        <h2 class="section-title">Quality & Certifications</h2>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                <h3>✅ ISO Standards</h3>
-                <p>Committed to maintaining internationally recognized quality management systems.</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>🛡️Quality Tested</h3>
-                <p>Every product undergoes multiple quality checks before reaching customers.</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>🤝Customer Trust</h3>
-                <p>Focused on delivering reliable homeopathic healthcare solutions with consistency.</p>
-            </div>
+            <a href="contact.html" class="btn-primary">Contact Us</a>
 
         </div>
+    </header>
 
+    <section class="hero">
+
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-spotlight"></div>
+
+        <div class="container hero-content hero-simple">
+            <div class="hero-text slide-left">
+                <span class="launch-badge"><span class="dot"></span> Launching Soon</span>
+                <h1>Our Products</h1>
+                <p>
+                    Our product portfolio is currently under development.
+                    High-quality homeopathic healthcare products will be available soon.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="cert-marquee">
+        <div class="cert-track">
+            <span>🏭 WHO-GMP Aligned Facility</span>
+            <span>✅ ISO Quality Framework</span>
+            <span>🇮🇳 Made In India</span>
+            <span>🧪 AYUSH-Compliant Process</span>
+            <span>🔬 Strict Batch Testing</span>
+            <span>🏭 WHO-GMP Aligned Facility</span>
+            <span>✅ ISO Quality Framework</span>
+            <span>🇮🇳 Made In India</span>
+            <span>🧪 AYUSH-Compliant Process</span>
+            <span>🔬 Strict Batch Testing</span>
+        </div>
     </div>
-</section>
 
-<section class="cta-section">
-    <div class="container">
-
-        <h2>Our Complete Product Range</h2>
-
-        <p>
-            Our premium homeopathic product portfolio is currently under development.
-            Stay connected for upcoming launches and business opportunities.
-        </p>
-
-        <a href="contact.html" class="btn-primary">
-            Contact Us
-        </a>
-
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="container footer-grid">
-
-        <div>
-            <h3>Homocure Pharmaceuticals</h3>
-            <p>
-                Delivering trusted homeopathic healthcare solutions with quality,
-                innovation and patient-first care.
+    <section class="products-preview">
+        <div class="container">
+            <h2 class="section-title">Our Product Categories</h2>
+            <p class="section-subtitle">
+                Explore our upcoming range of premium homeopathic healthcare products.
             </p>
         </div>
+    </section>
 
-        <div>
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Product Categories</h2>
+
+            <div class="feature-grid">
+
+                <div class="feature-card fade-up tilt">
+                    <img src="images/mother-tincture.png" alt="Mother Tinctures" class="product-img img-reveal">
+                    <h3>Mother Tinctures</h3>
+                    <p>Premium homeopathic mother tinctures prepared with carefully selected natural ingredients.</p>
+                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                </div>
+
+                <div class="feature-card fade-up tilt">
+                    <img src="images/dilution.png" alt="Dilutions" class="product-img img-reveal">
+                    <h3>Dilutions</h3>
+                    <p>Wide range of homeopathic dilutions in multiple potencies, from 30C to 1M.</p>
+                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                </div>
+
+                <div class="feature-card fade-up tilt">
+                    <img src="images/biochemic.png" alt="Biochemic Tablets" class="product-img img-reveal">
+                    <h3>Biochemic Tablets</h3>
+                    <p>Trusted biochemic combinations for daily healthcare.</p>
+                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                </div>
+
+                <div class="feature-card fade-up tilt">
+                    <img src="images/syrup.png" alt="Syrups" class="product-img img-reveal">
+                    <h3>Syrups</h3>
+                    <p>Safe and effective homeopathic syrups for all age groups.</p>
+                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                </div>
+
+                <div class="feature-card fade-up tilt">
+                    <img src="images/drops.png" alt="Drops" class="product-img img-reveal">
+                    <h3>Drops</h3>
+                    <p>Specialized drops for various health conditions.</p>
+                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                </div>
+
+                <div class="feature-card fade-up tilt">
+                    <img src="images/ointments.png" alt="Ointments" class="product-img img-reveal">
+                    <h3>Ointments</h3>
+                    <p>Premium external applications made with quality standards.</p>
+                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <svg class="wave-divider wave-fill-alt" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C300,60 900,0 1200,30 L1200,60 L0,60 Z"></path>
+    </svg>
+
+    <section class="manufacturing" style="padding-top:0;">
+        <div class="container">
+            <span class="eyebrow">Behind The Formula</span>
+            <h2 class="section-title">How Our Medicines Are Made</h2>
+            <p class="section-subtitle">
+                Every Homocure formulation follows the traditional homeopathic
+                preparation process, carried out under controlled, quality-tested conditions.
+            </p>
+
+            <div class="process-grid">
+                <div class="process-step fade-up tilt">
+                    <div class="step-number">1</div>
+                    <h4>Raw Material Sourcing</h4>
+                    <p>Careful selection of herbal, mineral or other natural source material for each formulation.</p>
+                </div>
+                <div class="process-step fade-up tilt">
+                    <div class="step-number">2</div>
+                    <h4>Mother Tincture Preparation</h4>
+                    <p>The raw material is extracted into a concentrated mother tincture — the base for every remedy.</p>
+                </div>
+                <div class="process-step fade-up tilt">
+                    <div class="step-number">3</div>
+                    <h4>Potentization</h4>
+                    <p>Serial dilution and succussion (vigorous shaking) create potency levels such as 30C, 200C or 1M.</p>
+                </div>
+                <div class="process-step fade-up tilt">
+                    <div class="step-number">4</div>
+                    <h4>Quality Testing</h4>
+                    <p>Every batch is tested for identity, purity and consistency before moving forward.</p>
+                </div>
+                <div class="process-step fade-up tilt">
+                    <div class="step-number">5</div>
+                    <h4>Packaging &amp; Labeling</h4>
+                    <p>Finished products are labelled with potency, batch details and stored correctly for distribution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="manufacturing">
+        <div class="container">
+            <h2 class="section-title">Manufacturing Standards</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card fade-up tilt">
+                    <h3>🏭 WHO-GMP Practices</h3>
+                    <p>Manufacturing process follows internationally accepted quality standards.</p>
+                </div>
+                <div class="feature-card fade-up tilt">
+                    <h3>🧪 Advanced Laboratory</h3>
+                    <p>Every batch undergoes strict quality testing before distribution.</p>
+                </div>
+                <div class="feature-card fade-up tilt">
+                    <h3>🔬 Research & Innovation</h3>
+                    <p>Continuous research to improve effectiveness, safety and reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quality-section">
+        <div class="container">
+            <h2 class="section-title">Quality & Certifications</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card fade-up tilt">
+                    <h3>✅ ISO Standards</h3>
+                    <p>Committed to maintaining internationally recognized quality management systems.</p>
+                </div>
+                <div class="feature-card fade-up tilt">
+                    <h3>🛡️ Quality Tested</h3>
+                    <p>Every product undergoes multiple quality checks before reaching customers.</p>
+                </div>
+                <div class="feature-card fade-up tilt">
+                    <h3>🤝 Customer Trust</h3>
+                    <p>Focused on delivering reliable homeopathic healthcare solutions with consistency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Our Complete Product Range</h2>
+            <p>
+                Our premium homeopathic product portfolio is currently under development.
+                Stay connected for upcoming launches and business opportunities.
+            </p>
+            <a href="contact.html" class="btn-primary">Contact Us</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+
+            <div>
+                <img src="images/logo.jpg" alt="Homocure Logo" class="footer-logo">
+                <p>
+                    Homocure Pharmaceuticals is committed to delivering trusted
+                    homeopathic healthcare solutions with quality and innovation.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>📍 Noida, Uttar Pradesh</p>
+                <p>✉ homocurepharma@gmail.com</p>
+                <p>📞 +91 XXXXX XXXXX</p>
+            </div>
+
         </div>
 
-        <div>
-            <h3>Contact</h3>
-            <p>📍 Noida, Uttar Pradesh</p>
-            <p>✉ homocurepharma@gmail.com</p>
-            <p>📞 +91 XXXXX XXXXX</p>
+        <div class="container copyright">
+            © 2026 Homocure Pharmaceuticals. All Rights Reserved.
         </div>
+    </footer>
 
-    </div>
+    <button id="backToTop" aria-label="Back to top">↑</button>
 
-    <div class="footer-bottom">
-        © 2026 Homocure Pharmaceuticals. All Rights Reserved.
-    </div>
-</footer>
-
+    <script src="js/script.js"></script>
 
 </body>
-
-<script src="js/script.js"></script>
-
 </html>

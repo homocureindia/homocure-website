@@ -1,135 +1,200 @@
-/* ===========================
-   TABLET
-=========================== */
+/* ===========================================================
+   RESPONSIVE LAYOUT RULES
+   Typography is fluid via clamp() in style.css — these rules
+   only handle structural changes: stacking, grid columns, nav.
+=========================================================== */
 
+/* ---------- TABLET (≤ 992px) ---------- */
 @media (max-width:992px){
 
-.hero-content,
-.about-container{
-    flex-direction:column;
-    text-align:center;
+    .hero-content,
+    .about-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-content .hero-text p,
+    .about-text p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-image{
+        margin-top:10px;
+    }
+
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .mission-box{
+        flex-direction:column;
+    }
+
+    .footer-content,
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+        text-align:left;
+    }
 }
 
-.hero-text{
-    padding-top:0;
+/* ---------- NAV COLLAPSE (≤ 900px) ----------
+   Switches to the hamburger earlier than the content-stacking
+   breakpoint below, so the navbar never gets squeezed on
+   mid-size tablets (770–900px) where the full desktop nav +
+   Contact button would otherwise run out of room. */
+@media (max-width:900px){
+
+    :root{
+        --navbar-height:72px;
+    }
+
+    .nav-container{
+        padding:12px 0;
+    }
+
+    .logo img{
+        height:46px;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-container > .btn-primary{
+        display:none;
+    }
+
+    /* Collapsible mobile nav panel */
+    .nav-container nav{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        background:#ffffff;
+        box-shadow:0 15px 30px rgba(0,0,0,.12);
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .35s ease;
+    }
+
+    .nav-container nav.open{
+        max-height:320px;
+    }
+
+    .nav-links{
+        flex-direction:column;
+        align-items:center;
+        gap:0;
+        padding:8px 0;
+    }
+
+    .nav-links li{
+        width:100%;
+        text-align:center;
+    }
+
+    .nav-links a{
+        display:block;
+        padding:14px 0;
+    }
 }
 
-.hero-image img{
-    max-width:90%;
-}
-
-.feature-grid{
-    grid-template-columns:repeat(2,1fr);
-}
-
-.footer-grid{
-    grid-template-columns:1fr;
-    text-align:center;
-}
-
-}
-
-
-/* ===========================
-   MOBILE
-=========================== */
-
+/* ---------- MOBILE CONTENT STACKING (≤ 768px) ---------- */
 @media (max-width:768px){
 
-.nav-container{
-    flex-direction:column;
-    align-items:center;
-    gap:15px;
-    padding:15px 0;
+    /* Hero */
+    .hero{
+        min-height:auto;
+    }
+
+    .hero-buttons,
+    .cta-buttons{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .hero-buttons .btn-primary,
+    .hero-buttons .btn-secondary,
+    .cta-buttons .btn-primary,
+    .cta-buttons .btn-secondary{
+        text-align:center;
+        width:100%;
+    }
+
+    /* Grids collapse to single column */
+    .feature-grid,
+    .stats-grid,
+    .counter-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-content,
+    .footer-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:36px;
+    }
+
+    .footer-logo{
+        margin:0 auto 20px;
+    }
+
+    #backToTop{
+        right:16px;
+        bottom:16px;
+        width:46px;
+        height:46px;
+        font-size:19px;
+    }
 }
 
-.logo img{
-    height:65px;
-}
-
-.nav-links{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:18px;
-    padding:0;
-}
-
-.hero{
-    padding-top:40px;
-}
-
-.hero-content,
-.about-container{
-    flex-direction:column;
-    text-align:center;
-}
-
-.hero-text h1{
-    font-size:38px;
-}
-
-.hero-text p{
-    font-size:16px;
-}
-
-.feature-grid{
-    grid-template-columns:1fr;
-}
-
-.hero-image img,
-.about-image img,
-.product-img{
-    max-width:100%;
-    width: 100%;
-    height:auto;
-}
-
-.hero-image{
-    margin-top:30px;
-}
-
-.footer-grid{
-    grid-template-columns:1fr;
-    text-align:center;
-}
-
-.btn-primary,
-.btn-secondary{
-    display:block;
-    width:100%;
-    text-align:center;
-}
-
-.nav-container .btn-primary{
-    display:none;
-}
-.navbar{
-    position:relative;
-    padding:15px 0;
-}
-}
-
-/* ===========================
-   SMALL MOBILE
-=========================== */
-
+/* ---------- SMALL MOBILE (≤ 480px) ---------- */
 @media (max-width:480px){
 
-.hero{
-    padding-top:190px;
-}
+    .container{
+        width:92%;
+    }
 
-.hero-text h1{
-    font-size:34px;
-}
+    .logo img{
+        height:40px;
+    }
 
-.section-title{
-    font-size:28px;
-}
+    .feature-card,
+    .stat-card,
+    .mission-card,
+    .process-step{
+        padding:26px 20px;
+    }
 
-.logo img{
-    height:60px;
-}
+    .hero-image img,
+    .about-image img{
+        border-radius:14px;
+    }
 
+    .timeline{
+        padding-left:26px;
+    }
+
+    .timeline-dot{
+        left:-34px;
+    }
+
+    .faq-question{
+        padding:18px 20px;
+        font-size:15px;
+    }
+
+    .faq-answer p{
+        padding:0 20px 18px;
+    }
+
+    .hero-blob{
+        filter:blur(40px);
+        opacity:.22;
+    }
 }
