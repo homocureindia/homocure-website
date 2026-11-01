@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/auth.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,42 +103,42 @@
                     <img src="images/mother-tincture.png" alt="Mother Tinctures" class="product-img">
                     <h3>Mother Tinctures</h3>
                     <p>Premium homeopathic mother tinctures prepared with carefully selected natural ingredients.</p>
-                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                    <a href="contact.html" class="btn-primary" data-order="Mother Tinctures" data-product-id="mother-tincture">Coming Soon</a>
                 </div>
 
                 <div class="feature-card fade-up">
                     <img src="images/dilution.png" alt="Dilutions" class="product-img">
                     <h3>Dilutions</h3>
                     <p>Wide range of homeopathic dilutions in multiple potencies, from 30C to 1M.</p>
-                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                    <a href="contact.html" class="btn-primary" data-order="Dilutions" data-product-id="dilution">Coming Soon</a>
                 </div>
 
                 <div class="feature-card fade-up">
                     <img src="images/biochemic.png" alt="Biochemic Tablets" class="product-img">
                     <h3>Biochemic Tablets</h3>
                     <p>Trusted biochemic combinations for daily healthcare.</p>
-                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                    <a href="contact.html" class="btn-primary" data-order="Biochemic Tablets" data-product-id="biochemic-tablets">Coming Soon</a>
                 </div>
 
                 <div class="feature-card fade-up">
                     <img src="images/syrup.png" alt="Syrups" class="product-img">
                     <h3>Syrups</h3>
                     <p>Safe and effective homeopathic syrups for all age groups.</p>
-                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                    <a href="contact.html" class="btn-primary" data-order="Syrups" data-product-id="syrup">Coming Soon</a>
                 </div>
 
                 <div class="feature-card fade-up">
                     <img src="images/drops.png" alt="Drops" class="product-img">
                     <h3>Drops</h3>
                     <p>Specialized drops for various health conditions.</p>
-                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                    <a href="contact.html" class="btn-primary" data-order="Drops" data-product-id="drops">Coming Soon</a>
                 </div>
 
                 <div class="feature-card fade-up">
                     <img src="images/ointments.png" alt="Ointments" class="product-img">
                     <h3>Ointments</h3>
                     <p>Premium external applications made with quality standards.</p>
-                    <a href="contact.html" class="btn-primary">Coming Soon</a>
+                    <a href="contact.html" class="btn-primary" data-order="Ointments" data-product-id="ointment">Coming Soon</a>
                 </div>
 
             </div>
@@ -279,6 +280,12 @@
 
     <script src="js/script.js"></script>
     <script src="js/news.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/orders.js"></script>
 
 </body>
 </html>
