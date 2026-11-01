@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Account | Homocure Pharmaceuticals</title>
+    <meta name="description" content="Manage your Homocure account, verify your mobile number and view your orders.">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/auth.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body data-hide-news-pill>
+
+    <div id="loader">
+        <div class="loader-logo">
+            <img src="images/logo.jpg" alt="Homocure Logo">
+        </div>
+    </div>
+
+    <div id="progress-bar"></div>
+
+    <header class="navbar">
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                <img src="images/logo.jpg" alt="Homocure Logo">
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="contact.html" class="btn-primary">Contact Us</a>
+
+        </div>
+    </header>
+
+    <main class="acc-page">
+  <div class="container">
+    <h1 class="acc-title">My Account</h1>
+
+    <div id="accLoading" class="empty">Loading…</div>
+    <div id="accGuest" class="empty hidden">Please <a href="login.html?next=account.html" style="color:#15803d;font-weight:600;">sign in</a> to view your account.</div>
+
+    <div id="accMain" class="hidden">
+
+      <!-- Terms gate: shown if the account has no profile record yet -->
+      <div class="acc-card acc-gate hidden" id="termsGate">
+        <h3>One last step</h3>
+        <p class="auth-sub">Please accept our terms to finish setting up your account.</p>
+        <label class="hc-check"><input type="checkbox" id="gateTerms"><span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+        <div class="hc-err" id="gateTermsErr"></div>
+        <button class="hc-btn" id="gateAccept" type="button">Accept &amp; continue</button>
+        <button class="hc-btn ghost" id="gateLogout" type="button" style="margin-top:10px">Sign out instead</button>
+      </div>
+
+      <div id="accContent">
+        <div class="acc-banner hidden" id="verifyBanner" role="status">
+          <span><b>Please verify your email address.</b> We sent a link to <span id="bannerEmail"></span>.</span>
+          <span class="acts">
+            <button class="hc-btn" id="bannerResend" type="button">Resend email</button>
+            <button class="hc-btn ghost" id="bannerRefresh" type="button">I've verified</button>
+          </span>
+        </div>
+        <div class="acc-notice hidden" id="profileNotice"></div>
+
+        <div class="acc-grid">
+          <div class="acc-stack">
+            <div class="acc-card">
+              <div class="acc-head"><div class="acc-avatar" id="accAvatar"></div><div><b id="accName"></b><small id="accEmail"></small></div></div>
+              <div class="acc-line"><span>Email</span><b id="accEmailBadge"></b></div>
+              <div class="acc-line"><span>Mobile</span><b id="accPhoneBadge"></b></div>
+              <div class="acc-line"><span>Sign-in methods</span><b class="acc-methods" id="accMethods"></b></div>
+              <div class="acc-line"><span>Member since</span><b id="accSince"></b></div>
+              <button class="hc-btn ghost" id="accLogout" type="button" style="margin-top:18px">Sign out</button>
+            </div>
+
+            <div class="acc-card" id="phoneCard">
+              <h3>Verify mobile number</h3>
+              <p class="auth-sub">A verified mobile number is needed to place orders.</p>
+              <form id="accPhone1" novalidate>
+                <div class="hc-field"><div class="hc-phone"><span>+91</span><input id="accPhoneInput" type="tel" inputmode="numeric" placeholder="10-digit mobile number" maxlength="14" aria-label="Mobile number"></div>
+                  <div class="hc-err" id="accPhoneInputErr"></div></div>
+                <button class="hc-btn" type="submit" id="accSend">Send OTP</button>
+              </form>
+              <form id="accPhone2" class="hidden" novalidate>
+                <div class="hc-field"><input id="accOtp" class="hc-otp" type="text" inputmode="numeric" maxlength="6" placeholder="••••••" aria-label="OTP">
+                  <div class="hc-err" id="accOtpErr"></div></div>
+                <button class="hc-btn" type="submit" id="accVerify">Verify</button>
+              </form>
+              <div id="acc-recaptcha"></div>
+              <div class="auth-msg" id="accMsg" role="alert"></div>
+            </div>
+          </div>
+
+          <div class="acc-stack">
+            <div class="acc-card">
+              <h3>Personal information</h3>
+              <form id="profileForm" novalidate>
+                <div class="hc-field"><label for="profName">Full name</label>
+                  <input id="profName" type="text" autocomplete="name" maxlength="100">
+                  <div class="hc-err" id="profNameErr"></div></div>
+                <div class="hc-two">
+                  <div class="hc-field"><label for="profEmail">Email</label><input id="profEmail" type="text" readonly placeholder="Not added"></div>
+                  <div class="hc-field"><label for="profPhone">Mobile</label><input id="profPhone" type="text" readonly placeholder="Not added"></div>
+                </div>
+                <p class="acc-note">Email and mobile are managed through verified sign-in and can't be edited here.</p>
+                <div class="acc-form-actions" style="margin-top:14px"><button class="hc-btn" type="submit" id="profSave">Save changes</button></div>
+              </form>
+            </div>
+
+            <div class="acc-card" id="securityCard">
+              <h3>Password &amp; security</h3>
+              <form id="pwForm" class="hidden" novalidate>
+                <p class="auth-sub">For your security you'll be asked for your current password.</p>
+                <div class="hc-field"><label for="curPw">Current password</label>
+                  <div class="hc-pw"><input id="curPw" type="password" autocomplete="current-password" maxlength="128"><button type="button" class="pw-toggle" data-target="curPw" aria-label="Show password">Show</button></div>
+                  <div class="hc-err" id="curPwErr"></div></div>
+                <div class="hc-field"><label for="newPw">New password</label>
+                  <div class="hc-pw"><input id="newPw" type="password" autocomplete="new-password" maxlength="128"><button type="button" class="pw-toggle" data-target="newPw" aria-label="Show password">Show</button></div>
+                  <div class="hc-hint">At least 8 characters, with a letter and a number.</div>
+                  <div class="hc-err" id="newPwErr"></div></div>
+                <div class="hc-field"><label for="newPw2">Confirm new password</label>
+                  <div class="hc-pw"><input id="newPw2" type="password" autocomplete="new-password" maxlength="128"><button type="button" class="pw-toggle" data-target="newPw2" aria-label="Show password">Show</button></div>
+                  <div class="hc-err" id="newPw2Err"></div></div>
+                <div class="acc-form-actions"><button class="hc-btn" type="submit" id="pwSave">Update password</button></div>
+              </form>
+              <p class="acc-note" id="noPwNote">You sign in with Google or mobile OTP, so there is no password to change.</p>
+            </div>
+
+            <div class="acc-card" id="orders">
+              <h3>My orders</h3>
+              <div id="orderList"><div class="empty">Loading orders…</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+        <div class="container footer-content">
+
+            <div>
+                <img src="images/logo.jpg" alt="Homocure Logo" class="footer-logo">
+                <p>
+                    Homocure Pharmaceuticals is committed to delivering trusted
+                    homeopathic healthcare solutions with quality and innovation.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>📧 homocurepharma@gmail.com</p>
+                <p>📍 Noida, Uttar Pradesh</p>
+            </div>
+
+        </div>
+
+        <div class="container copyright">
+            © 2026 Homocure Pharmaceuticals. All Rights Reserved.
+        </div>
+    </footer>
+
+    <button id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="js/script.js"></script>
+    <script src="js/news.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+
+<script src="js/account.js"></script>
+</body>
+</html>

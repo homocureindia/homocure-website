@@ -137,6 +137,8 @@
         document.body.appendChild(overlay);
         document.body.appendChild(panel);
         document.body.appendChild(pill);
+        // Focus pages (sign-in / account) opt out of the floating pill so it never covers form buttons
+        if (document.body.hasAttribute("data-hide-news-pill")) pill.style.display = "none";
 
         // Live section before footer
         var section = document.createElement("section");
@@ -200,7 +202,7 @@
     function renderList(isFallback) {
         if (!news.length) {
             els.list.innerHTML =
-                '<li class="hn-state">Abhi koi news nahi mili. Thodi der baad refresh karein.</li>';
+                '<li class="hn-state">No news found right now. Please try refreshing in a little while.</li>';
             els.metaText.textContent = "No news found";
             return;
         }
@@ -276,7 +278,7 @@
             } else {
                 els.pillText.textContent = "Live news unavailable right now";
                 els.src.textContent = "Homocure";
-                els.title.textContent = "Latest news abhi load nahi ho pa rahi. Please thodi der baad try karein.";
+                els.title.textContent = "We couldn't load the latest news right now. Please try again shortly.";
                 els.time.textContent = "";
                 els.counter.textContent = "";
             }
