@@ -12,8 +12,47 @@
     var TERMS_VERSION = "2026-10";
 
     var cfg = window.HOMOCURE_FIREBASE || {};
-    var configured = cfg.apiKey && cfg.apiKey.indexOf("PASTE_") !== 0;
-    var A = window.HomocureAuth = { ready: false, configured: configured, user: null, TERMS_VERSION: TERMS_VERSION };
+
+    /* Why would sign-in be unavailable? (shown only in the console / diagnose(), never to visitors)
+       - config-file-missing-or-broken : js/firebase-config.js 404 or has a JavaScript syntax error
+       - config-incomplete-or-placeholder : a required field is empty or still says PASTE_...
+       - sdk-not-loaded : the Firebase scripts from gstatic.com did not load (blocked / offline) */
+    var REQUIRED = ["apiKey", "authDomain", "projectId", "appId"];
+    var badFields = REQUIRED.filter(function (f) {
+        var v = cfg[f];
+        return typeof v !== "string" || !v.trim() || /PASTE_/.test(v);
+    });
+    var reason = null;
+    if (!window.HOMOCURE_FIREBASE) reason = "config-file-missing-or-broken";
+    else if (badFields.length) reason = "config-incomplete-or-placeholder";
+    else if (!window.firebase) reason = "sdk-not-loaded";
+    var configured = !reason;
+
+    var A = window.HomocureAuth = { ready: false, configured: configured, reason: reason, user: null, TERMS_VERSION: TERMS_VERSION };
+
+    // Safe to run in the browser console on any page:  HomocureAuth.diagnose()
+    // (never prints the API key)
+    A.diagnose = function () {
+        function safe(v) { return typeof v === "string" && v && !/PASTE_/.test(v) ? v : null; }
+        return {
+            reason: reason,
+            configured: configured,
+            sdkLoaded: !!window.firebase,
+            configFileLoaded: !!window.HOMOCURE_FIREBASE,
+            fieldsMissingOrPlaceholder: badFields,
+            projectId: safe(cfg.projectId),
+            authDomain: safe(cfg.authDomain),
+            pageHost: location.hostname,
+            ordersOpenFlag: window.HOMOCURE_ORDERS_OPEN,
+            lastError: A._last || null
+        };
+    };
+
+    var REASON_HELP = {
+        "config-file-missing-or-broken": "js/firebase-config.js did not define window.HOMOCURE_FIREBASE. The file is missing (404) or has a JavaScript syntax error (check the Console for 'SyntaxError' and the Network tab for the file).",
+        "config-incomplete-or-placeholder": "These Firebase config fields are empty or still placeholders: " + badFields.join(", ") + ". Paste your web-app config (Firebase Console > Project settings > Your apps).",
+        "sdk-not-loaded": "The Firebase SDK (gstatic.com/firebasejs) did not load — blocked by a network filter, ad/privacy blocker, or you are offline."
+    };
     var listeners = [];
 
     A.onChange = function (fn) { listeners.push(fn); if (A.ready) fn(A.user); };
@@ -76,10 +115,58 @@
             "auth/network-request-failed": "Network error. Please check your internet connection.",
             "auth/operation-not-allowed": "This sign-in method is not enabled yet.",
             "auth/unauthorized-domain": "This website domain is not authorised for sign-in yet.",
+            "auth/invalid-api-key": "Sign-in is temporarily unavailable. Please try again later.",
+            "auth/api-key-not-valid.-please-pass-a-valid-api-key.": "Sign-in is temporarily unavailable. Please try again later.",
+            "auth/configuration-not-found": "Sign-in is temporarily unavailable. Please try again later.",
+            "auth/app-not-authorized": "Sign-in is temporarily unavailable. Please try again later.",
+            "auth/invalid-app-credential": "Security check failed. Please refresh the page and try again.",
+            "auth/missing-app-credential": "Security check failed. Please refresh the page and try again.",
+            "auth/billing-not-enabled": "Mobile OTP is temporarily unavailable. Please sign in with Google or email for now.",
+            "auth/internal-error": "Something went wrong on our side. Please try again in a moment.",
             "permission-denied": "You don't have permission to do that."
         };
-        return m[e && e.code] || "Something went wrong. Please try again.";
+        var CONFIG_HINT = {
+            "auth/invalid-api-key": "the API key in js/firebase-config.js is wrong or restricted for this domain (Google Cloud > Credentials > browser key > website restrictions)",
+            "auth/api-key-not-valid.-please-pass-a-valid-api-key.": "the API key in js/firebase-config.js is wrong or restricted for this domain (Google Cloud > Credentials > browser key > website restrictions)",
+            "auth/configuration-not-found": "Firebase Authentication is not set up for this project (Console > Authentication > Get started, then enable the sign-in methods)",
+            "auth/app-not-authorized": "this website is not authorised for the API key (Google Cloud > Credentials > website restrictions)",
+            "auth/unauthorized-domain": "add " + location.hostname + " to Firebase Console > Authentication > Settings > Authorized domains",
+            "auth/operation-not-allowed": "enable this sign-in method in Firebase Console > Authentication > Sign-in method",
+            "auth/captcha-check-failed": "the reCAPTCHA check was rejected: reload and retry once; then check Authorized domains and App Check enforcement for Authentication",
+            "auth/invalid-app-credential": "the reCAPTCHA token was rejected or expired: reload and retry once (each token works once); if it persists check App Check enforcement for Authentication and the reCAPTCHA settings",
+            "auth/missing-app-credential": "no reCAPTCHA token reached Firebase: reload and retry; check that no extension blocks google.com/recaptcha",
+            "auth/billing-not-enabled": "Firebase says this project has no billing account linked, which SMS sign-in requires (test phone numbers work without it) — see Firebase Console > Billing",
+            "auth/quota-exceeded": "the SMS quota for this project is used up (Firebase Console > Authentication > Usage)"
+        };
+        if (e && CONFIG_HINT[e.code]) console.error("[Homocure] " + e.code + " — " + CONFIG_HINT[e.code] + ".");
+
+        // Exact error for debugging (visible in the browser console and HomocureAuth.lastError()).
+        // Routine user mistakes are not logged. The API key is never logged.
+        var EXPECTED = { "auth/invalid-credential": 1, "auth/wrong-password": 1, "auth/user-not-found": 1, "auth/invalid-email": 1,
+            "auth/weak-password": 1, "auth/email-already-in-use": 1, "auth/popup-closed-by-user": 1, "auth/cancelled-popup-request": 1,
+            "auth/invalid-verification-code": 1, "auth/missing-verification-code": 1, "auth/invalid-phone-number": 1, "auth/missing-phone-number": 1 };
+        if (e && (e.code || e.message) && !EXPECTED[e.code]) {
+            var srv = serverMessage(e);
+            A._last = { context: e._phoneFlow ? "phone-otp" : "auth", code: e.code || null, server: srv, message: String(e.message || "").slice(0, 200), host: location.hostname, time: new Date().toISOString() };
+            console.error("[Homocure] " + A._last.context + " error — code: " + A._last.code + (srv ? " | server: " + srv : "") + " | message: " + A._last.message);
+        }
+
+        if (m[e && e.code]) return m[e.code];
+        if (e && e._phoneFlow) return "Mobile OTP is temporarily unavailable. Please sign in with Google or email, or try again later.";
+        return "Something went wrong. Please try again.";
     };
+
+    // the real server error (e.g. BILLING_NOT_ENABLED) when the SDK exposes it
+    function serverMessage(e) {
+        try {
+            var r = e && e.customData && e.customData._serverResponse;
+            if (!r) return null;
+            if (typeof r === "string") return r.slice(0, 200);
+            if (r.error && r.error.message) return String(r.error.message).slice(0, 200);
+            return JSON.stringify(r).slice(0, 200);
+        } catch (x) { return null; }
+    }
+    A.lastError = function () { return A._last || null; };
 
     /* Small toast helper shared by other scripts */
     A.toast = function (msg, type) {
@@ -95,7 +182,7 @@
     if (!configured || !window.firebase) {
         A.configured = false;      // also covers "Firebase SDK failed to load" (blocked CDN / offline)
         document.addEventListener("DOMContentLoaded", function () {
-            if (!configured) console.warn("[Homocure] Firebase keys are not set — see js/firebase-config.js.");
+            console.error("[Homocure] Sign-in is disabled (" + reason + "). " + REASON_HELP[reason] + " Run HomocureAuth.diagnose() for details.");
             buildNav();
             A.ready = true; emit();
         });
@@ -215,13 +302,14 @@
     };
 
     /* Phone sign-in (new or existing user) */
+    function tagPhone(p) { return p.catch(function (e) { if (e && typeof e === "object") e._phoneFlow = true; throw e; }); }
     A.phoneSignIn = function (e164, containerId) {
-        return auth.signInWithPhoneNumber(e164, A.recaptcha(containerId));
+        return tagPhone(auth.signInWithPhoneNumber(e164, A.recaptcha(containerId)));
     };
 
     /* Verify & attach a phone number to the logged-in user (Google/email users) */
     A.linkPhone = function (e164, containerId) {
-        return auth.currentUser.linkWithPhoneNumber(e164, A.recaptcha(containerId));
+        return tagPhone(auth.currentUser.linkWithPhoneNumber(e164, A.recaptcha(containerId)));
     };
 
     A.hasPhone = function () { return !!(A.user && A.user.phoneNumber); };
