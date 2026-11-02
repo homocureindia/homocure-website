@@ -1,20 +1,14 @@
-/* ===========================================================
-   FIREBASE CONFIG — apni keys yahan paste karni hain
-   Firebase Console → Project settings → Your apps → Web app
-   (Setup steps README-SETUP.md mein hain)
-=========================================================== */
+
+/* HOMOCURE FIREBASE CONFIG */
+
 window.HOMOCURE_FIREBASE = {
-    apiKey:            "PASTE_API_KEY",
-    authDomain:        "PASTE_PROJECT_ID.firebaseapp.com",
-    projectId:         "PASTE_PROJECT_ID",
-    storageBucket:     "PASTE_PROJECT_ID.appspot.com",
-    messagingSenderId: "PASTE_SENDER_ID",
-    appId:             "PASTE_APP_ID"
+apiKey: "AIzaSyBCDwHOM4rrJh5rmN9lA-K8Rv75unSr1Wg",
+authDomain: "homocure-27faa.firebaseapp.com",
+projectId: "homocure-27faa",
+storageBucket: "homocure-27faa.firebasestorage.app" ,
+messagingSenderId: "421132024851",
+appId: "1:421132024851:web:a6a4f36268e31cec9f93e6",
+measurementId: "G-8J6YZ4YFHS"
 };
 
-/* UI-ONLY flag: sirf buttons ka text/behaviour badalta hai ("Coming Soon" vs "Order Now").
-   Yeh SECURITY control NAHI hai — koi bhi browser mein ise badal sakta hai.
-   Asli switch database mein hai: Firestore doc config/public → ordersOpen (boolean).
-   Jab tak woh true na ho (aur security review na ho), Firestore rules har order reject karti hain.
-   Is flag ko false hi rakhein. */
 window.HOMOCURE_ORDERS_OPEN = false;
